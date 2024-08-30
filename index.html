@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Teaser | OHLMEC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+        .job-teaser {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 3px solid #0066cc;
+        }
+        .logo-container {
+            text-align: center;
+            padding: 20px;
+            background-color: #0066cc;
+        }
+        .logo {
+            max-width: 200px;
+            height: auto;
+        }
+        .content {
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+        }
+        .slide {
+            display: none;
+            animation: fadeEffect 0.5s;
+        }
+        .slide.active {
+            display: block;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        .nav-dots {
+            text-align: center;
+            margin-top: 10px;
+        }
+        .dot {
+            height: 10px;
+            width: 10px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .dot.active {
+            background-color: #0066cc;
+        }
+        .full-ad-toggle {
+            text-align: right;
+            padding: 10px 20px;
+            background-color: #f0f8ff;
+        }
+        .full-job-ad {
+            display: none;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #ddd;
+        }
+        .apply-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #ff6600;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        .apply-button:hover {
+            background-color: #ff8533;
+        }
+    </style>
+</head>
+<body>
+    <div class="job-teaser">
+        <div class="logo-container">
+            <img src="https://imgur.com/qqIrNFb.png" alt="OHLMEC Logo" class="logo">
+        </div>
+        <div class="content">
+            <div class="slide active">
+                <h2>Job Overview</h2>
+                <p>Exciting opportunity for experienced local Mechanical Fitters and Boilermakers to join our Kalgoorlie Operations.</p>
+                <ul>
+                    <li>Full-time position</li>
+                    <li>Attractive remuneration</li>
+                    <li>Various rosters available</li>
+                </ul>
+            </div>
+            <div class="slide">
+                <h2>Requirements</h2>
+                <ul>
+                    <li>Australian Recognised Trade Qualification</li>
+                    <li>Valid manual Australian Driver's licence</li>
+                    <li>Confined space, Working at heights, and White Card</li>
+                    <li>Proven experience in a similar role</li>
+                </ul>
+            </div>
+            <div class="slide">
+                <h2>Our Core Values</h2>
+                <ul>
+                    <li>Safety is an attitude</li>
+                    <li>Quality across all levels</li>
+                    <li>A Culture you are proud to be part of</li>
+                    <li>Our Integrity is everything</li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+        <div class="full-ad-toggle">
+            <label for="fullAdToggle">Show Full Job Ad</label>
+            <input type="checkbox" id="fullAdToggle" onclick="toggleFullAd()">
+        </div>
+        <div class="full-job-ad" id="fullJobAd">
+            <h2>Full Job Description</h2>
+            <p>OHLMEC provides project management and consulting, specialised maintenance, fabrication on and off site, construction support and structural integrity maintenance and repairs to a variety of clients across Western Australia.</p>
+            <h3>Additional Requirements:</h3>
+            <ul>
+                <li>Gas Test Atmospheres (for Boilermakers)</li>
+                <li>Advantageous: EWP, (LF) Forklift, Crane, and Basic rigging Tickets</li>
+                <li>NPC within 12 Months or willing to obtain</li>
+                <li>Provide a compliant drug and alcohol screen on request</li>
+            </ul>
+            <h3>Benefits:</h3>
+            <ul>
+                <li>Join a growing WA owned and operated company</li>
+                <li>Opportunities for career development</li>
+            </ul>
+            <p><strong>Embracing Diversity and Inclusion:</strong> We are an Equal Opportunity Employer and promote equality and diversity. Indigenous Australians and candidates from minority groups are encouraged to apply.</p>
+        </div>
+        <a href="https://www.seek.com.au/Boilermaker-jobs/in-Kalgoorlie-WA-6430?jobId=78424467&type=standout" class="apply-button" target="_blank">Apply Now</a>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+            slides[slideIndex-1].classList.add("active");  
+            dots[slideIndex-1].classList.add("active");
+        }
+
+        function toggleFullAd() {
+            const fullJobAd = document.getElementById("fullJobAd");
+            fullJobAd.style.display = fullJobAd.style.display === "block" ? "none" : "block";
+        }
+
+        // Auto-slide functionality
+        setInterval(() => {
+            plusSlides(1);
+        }, 5000); // Change slide every 5 seconds
+    </script>
+</body>
+</html>
